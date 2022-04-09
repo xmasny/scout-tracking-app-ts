@@ -21,8 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "postinstall": "tsc",
     "test": "react-scripts test",
