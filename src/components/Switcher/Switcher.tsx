@@ -11,6 +11,7 @@ const Switcher: React.FC = (props) => {
         <Route path="/odborky" component={Odborky} />
         <Route path="/moje-aktivity" />
       </Switch>
+      <Redirect to="/odborky" />
     </>
   );
 };

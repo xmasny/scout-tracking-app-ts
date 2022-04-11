@@ -1,3 +1,9 @@
+.box {
+  margin-top: 1rem;
+}
+
 .subsection {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 1rem;
 }

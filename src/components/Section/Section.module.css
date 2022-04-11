@@ -1,5 +1,10 @@
-.section {
-  margin-top: 1rem;
+.box {
+  margin: 1rem;
+}
+
+.sectionOther {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .spinner {

@@ -17,6 +17,7 @@ import {
   Typography,
   AccordionDetails,
 } from '@mui/material';
+import ActivityCard from '../ActivityCard/ActivityCard';
 
 const { SKAUTI } = VekKatEnum;
 const { ODBORKY } = ProgKatEnum;
@@ -56,14 +57,21 @@ const Section: React.FC<VekKat> = ({ name: vekKatName, id: vekKatId }) => {
       }
     );
 
+  const programMapped = programData.program.map((aktivita: Program) => {
+    // console.log(aktivita);
+    return <ActivityCard key={aktivita.id} program={aktivita} />;
+  });
+
   return (
-    <Box className={css.section}>
+    <Box className={css.box}>
       <Accordion expanded>
         <AccordionSummary>
           <Typography variant="h4">{vekKatName}</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          {vekKatId === SKAUTI ? subsections() : <Typography></Typography>}
+        <AccordionDetails
+          className={vekKatId === SKAUTI ? null : css.sectionOther}
+        >
+          {vekKatId === SKAUTI ? subsections() : programMapped}
         </AccordionDetails>
       </Accordion>
     </Box>
