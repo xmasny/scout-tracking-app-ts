@@ -1,25 +1,37 @@
+import React from 'react';
 import { useQuery } from '@apollo/client';
-import React, { useEffect, useState } from 'react';
-import gql from 'graphql-tag';
+import { Box, CircularProgress, Container } from '@mui/material';
 
-const QUERY = gql`
-  {
-    program {
-      ulohy {
-        cislo_ulohy
-        text_ulohy
-        podulohy
-      }
-    }
+import {
+  GetVekKatOdborkyQuery,
+  GetProgramOdborkyQuery,
+} from '../../queries.graphql';
+import { VekKat } from '../../models/entities';
+import Section from '../../components/Section/Section';
+import css from './Odborky.module.css';
+
+const Odborky: React.FC = () => {
+  const { data: vekKatData, loading: vekKatLoading } = useQuery(
+    GetVekKatOdborkyQuery
+  );
+
+  if (vekKatLoading) {
+    return (
+      <Box className={css.spinner}>
+        <CircularProgress color="primary" />
+      </Box>
+    );
   }
-`;
 
-const Odborky: React.FC = (props) => {
-  const { data, loading, error } = useQuery(QUERY);
+  const sections = vekKatData.vekovaKat.map((section: VekKat) => {
+    return <Section key={section.id} id={section.id} name={section.name} />;
+  });
 
-  console.log(data);
-
-  return <div></div>;
+  return (
+    <Box className={css.box}>
+      <Container>{sections}</Container>
+    </Box>
+  );
 };
 
 export default Odborky;

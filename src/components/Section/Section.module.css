@@ -1,0 +1,9 @@
+.section {
+  margin-top: 1rem;
+}
+
+.spinner {
+  display: grid;
+  justify-content: center;
+  margin: 1rem;
+}

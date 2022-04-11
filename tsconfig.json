@@ -29,7 +29,8 @@
     ]
   },
   "include": [
-    "src"
+    "src",
+    "src/models/entities.tsx"
   ],
   "exclude": [
     "node_modules"
