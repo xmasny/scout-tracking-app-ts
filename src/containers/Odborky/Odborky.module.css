@@ -1,9 +1,9 @@
 .box {
-  margin-top: 3rem;
+  margin-top: 7rem;
 }
 
 .spinner {
   display: grid;
   justify-content: center;
-  margin: 3rem;
+  margin-top: 7rem;
 }

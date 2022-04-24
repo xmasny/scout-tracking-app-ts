@@ -10,7 +10,7 @@ import {
 import { Program } from '../../../models/entities';
 
 import css from './Subsection.module.css';
-import ActivityCard from '../../ActivityCard/ActivityCard';
+import ActivityCard from '../ActivityCard/ActivityCard';
 
 type Props = {
   id: number;

@@ -18,7 +18,7 @@ const Odborky: React.FC = () => {
   if (vekKatLoading) {
     return (
       <Box className={css.spinner}>
-        <CircularProgress color="primary" />
+        <CircularProgress color="secondary" />
       </Box>
     );
   }

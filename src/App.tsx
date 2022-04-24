@@ -9,10 +9,10 @@ import Odborky from './containers/Odborky/Odborky';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#32ac6d',
+      main: '#d1fb9b',
     },
     secondary: {
-      main: '#d1fb9b',
+      main: '#32ac6d',
     },
   },
 });

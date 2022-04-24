@@ -26,7 +26,7 @@ const NavBar: React.FC = () => {
 
   return (
     <div>
-      <AppBar position="sticky">
+      <AppBar position="fixed">
         <Toolbar className={css.navbar}>
           <Box>
             <Typography variant="h6">Slovensky skauting - odborky</Typography>

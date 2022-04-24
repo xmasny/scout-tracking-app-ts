@@ -17,7 +17,7 @@ import {
   Typography,
   AccordionDetails,
 } from '@mui/material';
-import ActivityCard from '../ActivityCard/ActivityCard';
+import ActivityCard from './ActivityCard/ActivityCard';
 
 const { SKAUTI } = VekKatEnum;
 const { ODBORKY } = ProgKatEnum;
@@ -34,7 +34,7 @@ const Section: React.FC<VekKat> = ({ name: vekKatName, id: vekKatId }) => {
   if (expertskeOdborkyLoading || programLoading) {
     return (
       <Box className={css.spinner}>
-        <CircularProgress color="primary" />
+        <CircularProgress color="secondary" />
       </Box>
     );
   }

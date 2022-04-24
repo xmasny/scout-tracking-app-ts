@@ -16,7 +16,7 @@ export type Uloha = {
   cislo_ulohy: number;
   text_ulohy: string;
   potrebny_pocet_poduloh?: number;
-  podulohy?: string;
+  podulohy?: string[];
 };
 
 export type ExpertskeOdborky = {
