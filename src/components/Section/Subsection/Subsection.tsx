@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Accordion,
@@ -11,19 +11,17 @@ import { Program } from '../../../models/entities';
 
 import css from './Subsection.module.css';
 import ActivityCard from '../ActivityCard/ActivityCard';
+import 'core-js/actual/array/group-by-to-map';
 
 type Props = {
   id: number;
   name: string;
-  program: Program[];
+  program: any;
 };
 
 const Subsection: React.FC<Props> = ({ id: expId, name: expName, program }) => {
-  //console.log(program);
-
-  const programMapped = program.map((aktivita: Program) => {
-    //console.log(aktivita);
-    return <ActivityCard key={aktivita.id} program={aktivita} />;
+  const programMapped = program.map((aktivita: any) => {
+    return <ActivityCard key={aktivita.id} program={aktivita.items} />;
   });
 
   return (

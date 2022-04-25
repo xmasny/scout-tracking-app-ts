@@ -9,19 +9,19 @@ import {
 } from '@mui/material';
 
 import css from './ActivityModal.module.css';
-import { Program } from '../../../../models/entities';
-
 type Props = {
   open: boolean;
-  program: Program;
+  program: any;
   handleClose: () => void;
 };
 
 const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
-  const { name, photo, ulohy } = program;
+  const { name, photo, ulohy } = program[0];
 
-  const programUlohyMap = ulohy.map((uloha) => {
-    const programPodulohyMap = uloha.podulohy?.map((poduloha) => {
+  console.log(program);
+
+  const programUlohyMap = ulohy.map((uloha: any) => {
+    const programPodulohyMap = uloha.podulohy?.map((poduloha: any) => {
       return <li>{poduloha}</li>;
     });
 

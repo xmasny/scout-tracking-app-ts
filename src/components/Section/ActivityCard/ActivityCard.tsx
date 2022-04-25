@@ -1,20 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {
-  Backdrop,
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 import css from './ActivityCard.module.css';
-import { Program } from '../../../models/entities';
 import ActivityModal from './ActivityModal/ActivityModal';
 
 type Props = {
-  program: Program;
+  program: any;
 };
 
 const ActivityCard: React.FC<Props> = ({ program }) => {
@@ -22,7 +14,7 @@ const ActivityCard: React.FC<Props> = ({ program }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { name, photo } = program;
+  const { id, name, photo } = program[0];
 
   return (
     <>
@@ -50,7 +42,7 @@ const ActivityCard: React.FC<Props> = ({ program }) => {
         </Card>
       </Box>
       <ActivityModal
-        key={program.id}
+        key={id}
         open={open}
         handleClose={handleClose}
         program={program}

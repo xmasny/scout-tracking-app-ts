@@ -18,6 +18,7 @@ import {
   AccordionDetails,
 } from '@mui/material';
 import ActivityCard from './ActivityCard/ActivityCard';
+import { collect } from 'collect.js';
 
 const { SKAUTI } = VekKatEnum;
 const { ODBORKY } = ProgKatEnum;
@@ -39,11 +40,15 @@ const Section: React.FC<VekKat> = ({ name: vekKatName, id: vekKatId }) => {
     );
   }
 
+  const collection = collect(programData.program);
+  const program = collection.groupBy('name').toArray();
+
   const subsections = () =>
     expertskeOdborkyData.expertskeOdborky.map(
       (subsection: ExpertskeOdborky) => {
-        const expFiltered = programData.program.filter(
-          (odborka: Program) => odborka.expertske_odborky?.id === subsection.id
+        const expFiltered = program.filter(
+          (odborka: any) =>
+            odborka.items[0].expertske_odborky.id === subsection.id
         );
 
         return (
@@ -57,9 +62,8 @@ const Section: React.FC<VekKat> = ({ name: vekKatName, id: vekKatId }) => {
       }
     );
 
-  const programMapped = programData.program.map((aktivita: Program) => {
-    // console.log(aktivita);
-    return <ActivityCard key={aktivita.id} program={aktivita} />;
+  const programMapped = program.map((aktivita: any) => {
+    return <ActivityCard key={aktivita.id} program={aktivita.items} />;
   });
 
   return (
