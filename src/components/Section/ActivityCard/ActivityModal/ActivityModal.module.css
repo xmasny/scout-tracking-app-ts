@@ -1,7 +1,12 @@
 .dialogTitle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   font-size: 3rem;
 }
 
@@ -12,3 +17,4 @@
 .spaceBetween {
   margin-bottom: 10px;
 }
+/*# sourceMappingURL=ActivityModal.module.css.map */

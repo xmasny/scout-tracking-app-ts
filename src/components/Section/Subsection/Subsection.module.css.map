@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,MAAM;EACvB,UAAU,EAAE,IAAI;EAChB,WAAW,EAAE,MAAM;CACpB",
+    "sources": [
+        "Subsection.module.scss"
+    ],
+    "names": [],
+    "file": "Subsection.module.css"
+}

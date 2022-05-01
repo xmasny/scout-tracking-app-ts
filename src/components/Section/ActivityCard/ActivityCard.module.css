@@ -1,27 +1,40 @@
 .card {
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 1rem;
   margin: 0.5rem;
   width: 192px;
   background-color: solid;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
   transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 .image {
+  display: -ms-grid;
   display: grid;
-  justify-self: center;
-  /* max-height: 150px; */
+  -ms-grid-column-align: center;
+      justify-self: center;
   max-width: 150px;
 }
 
 .topic {
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
 }
 
 .card:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0px 14px 28px rgba(0, 0, 0, 0.25));
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-filter: drop-shadow(0px 14px 28px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 14px 28px rgba(0, 0, 0, 0.25));
 }
+/*# sourceMappingURL=ActivityCard.module.css.map */

@@ -1,0 +1,15 @@
+.container {
+    justify-content: end;
+  }
+  
+  .navbar {
+    background: linear-gradient(to right, #32ac6d, #d1fb9b);
+    justify-content: space-between;
+  }
+  
+  .stickNavbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  

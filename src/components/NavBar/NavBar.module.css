@@ -1,14 +1,21 @@
 .container {
-  justify-content: end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
 }
 
 .navbar {
+  background: -webkit-gradient(linear, left top, right top, from(#32ac6d), to(#d1fb9b));
   background: linear-gradient(to right, #32ac6d, #d1fb9b);
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .stickNavbar {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 100;
 }
+/*# sourceMappingURL=NavBar.module.css.map */
