@@ -7,8 +7,6 @@ import {
   AccordionDetails,
 } from '@mui/material';
 
-import { Program } from '../../../models/entities';
-
 import css from './Subsection.module.css';
 import ActivityCard from '../ActivityCard/ActivityCard';
 import 'core-js/actual/array/group-by-to-map';

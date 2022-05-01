@@ -1,14 +1,9 @@
 import React from 'react';
 
-import {
-  Box,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Typography,
-} from '@mui/material';
+import { Box, Dialog, DialogContent, DialogTitle } from '@mui/material';
 
 import css from './ActivityModal.module.css';
+import ProgramInfo from './ProgramInfo/ProgramInfo';
 type Props = {
   open: boolean;
   program: any;
@@ -16,17 +11,17 @@ type Props = {
 };
 
 const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
-  const { name, photo, ulohy } = program[0];
+  const { name, photo, ulohy, info } = program[0];
 
-  console.log(program);
+  // console.log(program);
 
   const programUlohyMap = ulohy.map((uloha: any) => {
     const programPodulohyMap = uloha.podulohy?.map((poduloha: any) => {
-      return <li>{poduloha}</li>;
+      return <li className={css.spaceBetween}>{poduloha}</li>;
     });
 
     return (
-      <li>
+      <li className={css.spaceBetween}>
         {uloha.text_ulohy}
         <ul>{programPodulohyMap}</ul>
       </li>
@@ -34,21 +29,20 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
   });
 
   return (
-    <Box className={css.activityModal}>
+    <Box>
       <Dialog
         open={open}
         onClose={handleClose}
         closeAfterTransition
         onBackdropClick={handleClose}
       >
-        <DialogTitle>
-          <Typography>
-            <img src={photo} alt={name} />
-            {name}
-          </Typography>
+        <DialogTitle className={css.dialogTitle}>
+          <img className={css.image} src={photo} alt={name} />
+          {name}
         </DialogTitle>
         <DialogContent>
           <ol>{programUlohyMap}</ol>
+          {info && <ProgramInfo info={info} />}
         </DialogContent>
       </Dialog>
     </Box>
