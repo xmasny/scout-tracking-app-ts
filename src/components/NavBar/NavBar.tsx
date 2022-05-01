@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   AppBar,
   Box,
@@ -25,8 +25,8 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div>
-      <AppBar position="fixed">
+    <div className={css.stickNavbar}>
+      <AppBar>
         <Toolbar className={css.navbar}>
           <Box>
             <Typography variant="h6">Slovensky skauting - odborky</Typography>

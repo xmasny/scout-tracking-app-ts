@@ -1,6 +1,13 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Box, CircularProgress, Container } from '@mui/material';
+import {
+  Box,
+  CircularProgress,
+  Container,
+  IconButton,
+  Paper,
+  TextField,
+} from '@mui/material';
 
 import {
   GetVekKatOdborkyQuery,
@@ -9,6 +16,7 @@ import {
 import { VekKat } from '../../models/entities';
 import Section from '../../components/Section/Section';
 import css from './Odborky.module.css';
+import { Search } from '@mui/icons-material';
 
 const Odborky: React.FC = () => {
   const { data: vekKatData, loading: vekKatLoading } = useQuery(
@@ -28,9 +36,21 @@ const Odborky: React.FC = () => {
   });
 
   return (
-    <Box className={css.box}>
-      <Container>{sections}</Container>
-    </Box>
+    <Container className={css.container}>
+      <Paper className={css.paper}>
+        <IconButton>
+          <Search className={css.search} />
+        </IconButton>
+        <TextField
+          className={css.textField}
+          variant="outlined"
+          color="secondary"
+          label="Hľadať"
+          fullWidth
+        />
+      </Paper>
+      <Box className={css.box}>{sections}</Box>
+    </Container>
   );
 };
 
