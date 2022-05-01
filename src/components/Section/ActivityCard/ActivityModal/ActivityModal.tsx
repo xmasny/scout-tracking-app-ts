@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Box, Dialog, DialogContent, DialogTitle } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@mui/material';
 
 import css from './ActivityModal.module.css';
 import ProgramInfo from './ProgramInfo/ProgramInfo';
+import { Program } from '../../../../models/entities';
 type Props = {
   open: boolean;
   program: any;
@@ -11,7 +19,10 @@ type Props = {
 };
 
 const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
-  const { name, photo, ulohy, info } = program[0];
+  const [stupenProgram, setStupenProgram] = useState<Program>(program[0]);
+  const [stupenButtonName, setStupenButtonName] = useState<string>('červený');
+
+  const { name, photo, ulohy, info, stupen } = stupenProgram;
 
   // console.log(program);
 
@@ -27,6 +38,19 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
       </li>
     );
   });
+  console.log(stupen);
+
+  useEffect(() => {
+    if (stupen?.id === 1) setStupenButtonName('Zobraziť červený stupeň');
+    if (stupen?.id === 2) setStupenButtonName('Zobraziť zelený stupeň');
+  }, [stupen?.id]);
+
+  console.log(program);
+
+  const handleChangeStupen = () => {
+    if (stupen?.id === 1) setStupenProgram(program[1]);
+    if (stupen?.id === 2) setStupenProgram(program[0]);
+  };
 
   return (
     <Box>
@@ -44,6 +68,17 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
           <ol>{programUlohyMap}</ol>
           {info && <ProgramInfo info={info} />}
         </DialogContent>
+        <DialogActions>
+          {program.length === 2 && (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleChangeStupen}
+            >
+              {stupenButtonName}
+            </Button>
+          )}
+        </DialogActions>
       </Dialog>
     </Box>
   );
