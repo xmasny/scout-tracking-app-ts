@@ -36,7 +36,7 @@ const Odborky: React.FC = () => {
   });
 
   return (
-    <Container className={css.container}>
+    <Container className={css.container} sx={{ display: 'grid' }}>
       <Paper className={css.paper}>
         <IconButton>
           <Search className={css.search} />
@@ -49,7 +49,7 @@ const Odborky: React.FC = () => {
           fullWidth
         />
       </Paper>
-      <Box className={css.box}>{sections}</Box>
+      <Box>{sections}</Box>
     </Container>
   );
 };

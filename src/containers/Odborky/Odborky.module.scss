@@ -1,36 +1,32 @@
-.box {
-    margin-top: 1rem;
-  }
-  
-  .spinner {
-    display: grid;
-    justify-content: center;
-    margin-top: 7rem;
-  }
-  
-  .paper {
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 5rem;
-    z-index: 10;
-    margin-top: 7rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: 90%;
-  }
-  
-  .container {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  .search {
-    padding: 10px;
-  }
-  
-  .textField {
-    margin: 10px 10px 10px 0px;
-  }
-  
+@import "../../../variables";
+
+.spinner {
+  display: grid;
+  justify-content: center;
+  margin-top: 7rem;
+}
+
+.paper {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 5rem;
+  z-index: 10;
+  margin-top: 6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  width: 90%;
+}
+
+.container {
+  justify-items: center;
+  align-items: center;
+}
+
+.search {
+  padding: 10px;
+}
+
+.textField {
+  margin: 10px 10px 10px 0px;
+}

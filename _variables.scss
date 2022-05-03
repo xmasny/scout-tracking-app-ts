@@ -1,0 +1,20 @@
+//variables
+$primary-color: #d1fb9b;
+$secondary-color: #32ac6d;
+
+//classes
+
+@mixin image {
+    .image {
+        display: grid;
+        justify-self: center;
+        max-width: 150px;
+    }
+}
+
+//mixins
+
+@mixin center {
+    justify-content: center;
+    align-items: center;
+}

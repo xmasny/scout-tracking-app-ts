@@ -7,11 +7,13 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
 } from '@mui/material';
 
 import css from './ActivityModal.module.css';
 import ProgramInfo from './ProgramInfo/ProgramInfo';
 import { Program } from '../../../../models/entities';
+import { Close } from '@mui/icons-material';
 type Props = {
   open: boolean;
   program: any;
@@ -78,6 +80,9 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
               {stupenButtonName}
             </Button>
           )}
+          <Button variant="contained" color="error" onClick={handleClose}>
+            Zavrieť
+          </Button>
         </DialogActions>
       </Dialog>
     </Box>
