@@ -22,16 +22,20 @@ const Subsection: React.FC<Props> = ({ id: expId, name: expName, program }) => {
     return <ActivityCard key={aktivita.id} program={aktivita.items} />;
   });
 
+  console.log(program);
+
   return (
     <Box className={css.box}>
-      <Accordion expanded>
-        <AccordionSummary>
-          <Typography variant="h5">{expName}</Typography>
-        </AccordionSummary>
-        <AccordionDetails className={css.subsection}>
-          {programMapped}
-        </AccordionDetails>
-      </Accordion>
+      {program.length !== 0 && (
+        <Accordion expanded>
+          <AccordionSummary>
+            <Typography variant="h5">{expName}</Typography>
+          </AccordionSummary>
+          <AccordionDetails className={css.subsection}>
+            {programMapped}
+          </AccordionDetails>
+        </Accordion>
+      )}
     </Box>
   );
 };

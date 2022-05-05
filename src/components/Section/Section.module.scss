@@ -8,7 +8,7 @@
 .sectionOther {
   display: flex;
   flex-wrap: wrap;
-  @include center;
+  @include aligning;
 }
 
 .spinner {

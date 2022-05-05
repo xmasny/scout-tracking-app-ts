@@ -40,14 +40,11 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
       </li>
     );
   });
-  console.log(stupen);
 
   useEffect(() => {
     if (stupen?.id === 1) setStupenButtonName('Zobraziť červený stupeň');
     if (stupen?.id === 2) setStupenButtonName('Zobraziť zelený stupeň');
   }, [stupen?.id]);
-
-  console.log(program);
 
   const handleChangeStupen = () => {
     if (stupen?.id === 1) setStupenProgram(program[1]);

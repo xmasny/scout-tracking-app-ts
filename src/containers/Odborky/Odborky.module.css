@@ -1,3 +1,7 @@
+.box {
+  width: 100%;
+}
+
 .spinner {
   display: -ms-grid;
   display: grid;
@@ -18,9 +22,8 @@
   position: sticky;
   top: 5rem;
   z-index: 10;
-  margin-top: 6rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 6rem 1rem 0 1rem;
+  padding: 5px 5px 5px;
   width: 90%;
 }
 
@@ -33,9 +36,5 @@
 
 .search {
   padding: 10px;
-}
-
-.textField {
-  margin: 10px 10px 10px 0px;
 }
 /*# sourceMappingURL=Odborky.module.css.map */
