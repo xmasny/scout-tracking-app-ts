@@ -72,6 +72,8 @@ const Section: React.FC<Props> = ({
   const collection = collect(filteredProgram);
   const program = collection.groupBy('name').toArray();
 
+  console.log(program);
+
   const subsections = () =>
     expertskeOdborkyData.expertskeOdborky.map(
       (subsection: ExpertskeOdborky) => {

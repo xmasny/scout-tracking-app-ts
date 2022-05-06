@@ -23,6 +23,9 @@ type Props = {
 const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
   const [stupenProgram, setStupenProgram] = useState<Program>(program[0]);
   const [stupenButtonName, setStupenButtonName] = useState<string>('červený');
+  const [buttonCollor, setButtonCollor] = useState<'error' | 'success'>(
+    'error'
+  );
 
   const { name, photo, ulohy, info, stupen } = stupenProgram;
 
@@ -42,8 +45,14 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
   });
 
   useEffect(() => {
-    if (stupen?.id === 1) setStupenButtonName('Zobraziť červený stupeň');
-    if (stupen?.id === 2) setStupenButtonName('Zobraziť zelený stupeň');
+    if (stupen?.id === 1) {
+      setStupenButtonName('Zobraziť červený stupeň');
+      setButtonCollor('error');
+    }
+    if (stupen?.id === 2) {
+      setStupenButtonName('Zobraziť zelený stupeň');
+      setButtonCollor('success');
+    }
   }, [stupen?.id]);
 
   const handleChangeStupen = () => {
@@ -71,13 +80,13 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
           {program.length === 2 && (
             <Button
               variant="contained"
-              color="primary"
+              color={buttonCollor}
               onClick={handleChangeStupen}
             >
               {stupenButtonName}
             </Button>
           )}
-          <Button variant="contained" color="error" onClick={handleClose}>
+          <Button variant="contained" color="inherit" onClick={handleClose}>
             Zavrieť
           </Button>
         </DialogActions>

@@ -51,21 +51,23 @@ const Odborky: React.FC = () => {
   });
 
   return (
-    <Container className={css.container} sx={{ display: 'grid' }}>
-      <Paper className={css.paper}>
-        <IconButton>
-          <Search className={css.search} />
-        </IconButton>
-        <TextField
-          variant="outlined"
-          color="secondary"
-          label="Hľadať"
-          fullWidth
-          onChange={textFieldHandler}
-        />
-      </Paper>
-      <Box className={css.box}>{sections}</Box>
-    </Container>
+    <Box>
+      <Container className={css.container} sx={{ display: 'grid' }}>
+        <Paper className={css.paper}>
+          <IconButton>
+            <Search className={css.search} />
+          </IconButton>
+          <TextField
+            variant="outlined"
+            color="secondary"
+            label="Hľadať"
+            fullWidth
+            onChange={textFieldHandler}
+          />
+        </Paper>
+        <Box className={css.box}>{sections}</Box>
+      </Container>
+    </Box>
   );
 };
 

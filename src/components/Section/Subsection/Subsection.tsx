@@ -22,8 +22,6 @@ const Subsection: React.FC<Props> = ({ id: expId, name: expName, program }) => {
     return <ActivityCard key={aktivita.id} program={aktivita.items} />;
   });
 
-  console.log(program);
-
   return (
     <Box className={css.box}>
       {program.length !== 0 && (
