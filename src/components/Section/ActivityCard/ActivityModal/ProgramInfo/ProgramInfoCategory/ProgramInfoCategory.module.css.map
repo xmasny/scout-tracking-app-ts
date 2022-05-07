@@ -1,9 +1,8 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,KAAK,CAAC;EACJ,aAAa,EAAE,IAAI;CACpB;;AAED,AAAA,MAAM,CAAC;EACL,SAAS,EAAE,IAAI;CAChB",
+    "mappings": "AAAA,IAAI,CAAJ,gCAAI;AAEJ,AAAA,KAAK,CAAC;EACJ,aAAa,EAAE,IAAI;CACpB;;AAED,AAAA,MAAM,CAAC;EACL,SAAS,EAAE,IAAI;CAChB",
     "sources": [
-        "ProgramInfoCategory.module.scss",
-        "../../../../../../../_variables.scss"
+        "ProgramInfoCategory.module.scss"
     ],
     "names": [],
     "file": "ProgramInfoCategory.module.css"
