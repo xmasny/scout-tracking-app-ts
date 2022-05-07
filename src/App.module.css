@@ -1,4 +1,7 @@
-.bgImg {
-  opacity: 0.03;
-  background-image: url('https://st2.depositphotos.com/3580719/10445/v/950/depositphotos_104453362-stock-illustration-seamless-background-with-simple-hand.jpg');
+.fab {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  margin: 4rem;
 }
+/*# sourceMappingURL=App.module.css.map */

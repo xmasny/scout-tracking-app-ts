@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import {
   Box,
   CircularProgress,
   Container,
+  Fab,
   IconButton,
   Paper,
   TextField,
+  Zoom,
 } from '@mui/material';
 
 import {
@@ -16,8 +18,9 @@ import {
 import { VekKat } from '../../models/entities';
 import Section from '../../components/Section/Section';
 import css from './Odborky.module.css';
-import { Search } from '@mui/icons-material';
+import { KeyboardArrowUpRounded, Search } from '@mui/icons-material';
 import { remove } from 'remove-accents';
+import ScrollToTop from 'react-scroll-up';
 
 const Odborky: React.FC = () => {
   const { data: vekKatData, loading: vekKatLoading } = useQuery(
@@ -67,6 +70,12 @@ const Odborky: React.FC = () => {
         </Paper>
         <Box className={css.box}>{sections}</Box>
       </Container>
+
+      <ScrollToTop showUnder={300} duration={1000}>
+        <Fab className={css.fab} color="primary">
+          <KeyboardArrowUpRounded />
+        </Fab>
+      </ScrollToTop>
     </Box>
   );
 };

@@ -29,3 +29,11 @@
 .search {
   padding: 10px;
 }
+
+.fab {
+  scroll-behavior: smooth;
+  position: fixed;
+  right: 2rem;
+  bottom: 1rem;
+  z-index: 100;
+}
