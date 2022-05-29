@@ -10,7 +10,7 @@ type Props = {
 };
 
 const ActivityCard: React.FC<Props> = ({ program }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

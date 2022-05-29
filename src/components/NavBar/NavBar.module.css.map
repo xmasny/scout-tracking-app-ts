@@ -1,9 +1,8 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,UAAU,CAAC;EACT,eAAe,EAAE,GAAG;CACrB;;AAED,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,2CAA2D;EACvE,eAAe,EAAE,aAAa;CAC/B;;AAED,AAAA,YAAY,CAAC;EACX,QAAQ,EAAE,MAAM;EAChB,GAAG,EAAE,CAAC;EACN,OAAO,EAAE,GAAG;CACb",
+    "mappings": "AAGA,AAAA,UAAU,CAAC;EACT,eAAe,EAAE,GAAG;CACrB;;AAED,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,2CAA2D;EACvE,eAAe,EAAE,aAAa;CAC/B;;AAED,AAAA,YAAY,CAAC;EACX,QAAQ,EAAE,MAAM;EAChB,GAAG,EAAE,CAAC;EACN,OAAO,EAAE,GAAG;CACb",
     "sources": [
-        "NavBar.module.scss",
-        "../../../_variables.scss"
+        "NavBar.module.scss"
     ],
     "names": [],
     "file": "NavBar.module.css"

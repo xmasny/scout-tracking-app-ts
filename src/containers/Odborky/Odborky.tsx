@@ -8,6 +8,7 @@ import {
   IconButton,
   Paper,
   TextField,
+  Tooltip,
   Zoom,
 } from '@mui/material';
 
@@ -18,14 +19,23 @@ import {
 import { VekKat } from '../../models/entities';
 import Section from '../../components/Section/Section';
 import css from './Odborky.module.css';
-import { KeyboardArrowUpRounded, Search } from '@mui/icons-material';
+import {
+  AddRounded,
+  KeyboardArrowUpRounded,
+  Search,
+} from '@mui/icons-material';
 import { remove } from 'remove-accents';
 import ScrollToTop from 'react-scroll-up';
+import VytvorNovuOdborkuDialog from '../../components/VytvorNovuOdborkuDialog/VytvorNovuOdborkuDialog';
 
 const Odborky: React.FC = () => {
   const { data: vekKatData, loading: vekKatLoading } = useQuery(
     GetVekKatOdborkyQuery
   );
+
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [searchField, setSearchField] = useState<string>('');
 
@@ -70,12 +80,28 @@ const Odborky: React.FC = () => {
         </Paper>
         <Box className={css.box}>{sections}</Box>
       </Container>
-
-      <ScrollToTop showUnder={300} duration={1000}>
-        <Fab className={css.fab} color="primary">
-          <KeyboardArrowUpRounded />
-        </Fab>
-      </ScrollToTop>
+      <div className={css.fab}>
+        <ScrollToTop
+          style={{ position: 'static' }}
+          showUnder={300}
+          duration={2000}
+          easing="easeInOutQuint"
+        >
+          <Box className={css.floatingButton}>
+            <Fab>
+              <KeyboardArrowUpRounded />
+            </Fab>
+          </Box>
+        </ScrollToTop>
+        <Box className={css.floatingButtonLast}>
+          <Tooltip title="Vytvoriť novú odborku" placement="left" arrow>
+            <Fab onClick={handleOpen} color="primary">
+              <AddRounded />
+            </Fab>
+          </Tooltip>
+        </Box>
+      </div>
+      <VytvorNovuOdborkuDialog open={open} handleClose={handleClose} />
     </Box>
   );
 };

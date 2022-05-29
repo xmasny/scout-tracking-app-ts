@@ -1,9 +1,8 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;ECSb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,GAAG;EDRlB,UAAU,EAAE,IAAI;CACjB",
+    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,IAAI;CACjB",
     "sources": [
-        "Subsection.module.scss",
-        "../../../../_variables.scss"
+        "Subsection.module.scss"
     ],
     "names": [],
     "file": "Subsection.module.css"

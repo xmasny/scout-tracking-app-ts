@@ -49,7 +49,7 @@ const Section: React.FC<Props> = ({
     variables: { programId: ODBORKY, vekovaKatId: vekKatId },
   });
 
-  const [filteredProgram, setfilteredProgram] = useState<Program[]>();
+  const [filteredProgram, setFilteredProgram] = useState<Program[]>();
 
   useEffect(() => {
     if (!programLoading) {
@@ -57,7 +57,7 @@ const Section: React.FC<Props> = ({
         remove(value.name.toLowerCase()).includes(searchField)
       );
 
-      setfilteredProgram(filter);
+      setFilteredProgram(filter);
     }
   }, [programData, searchField, programLoading]);
 
@@ -72,7 +72,7 @@ const Section: React.FC<Props> = ({
   const collection = collect(filteredProgram);
   const program = collection.groupBy('name').toArray();
 
-  console.log(program);
+  //console.log(program);
 
   const subsections = () =>
     expertskeOdborkyData.expertskeOdborky.map(

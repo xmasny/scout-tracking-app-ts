@@ -7,13 +7,11 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
 } from '@mui/material';
 
 import css from './ActivityModal.module.css';
 import ProgramInfo from './ProgramInfo/ProgramInfo';
 import { Program } from '../../../../models/entities';
-import { Close } from '@mui/icons-material';
 type Props = {
   open: boolean;
   program: any;
@@ -27,9 +25,7 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
     'error'
   );
 
-  const { name, photo, ulohy, info, stupen } = stupenProgram;
-
-  // console.log(program);
+  const { name, photo, ulohy, info, stupen, id } = stupenProgram;
 
   const programUlohyMap = ulohy.map((uloha: any) => {
     const programPodulohyMap = uloha.podulohy?.map((poduloha: any) => {
@@ -60,6 +56,10 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
     if (stupen?.id === 2) setStupenProgram(program[0]);
   };
 
+  const handleChoose = () => {
+    console.log(id);
+  };
+
   return (
     <Box>
       <Dialog
@@ -86,6 +86,9 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
               {stupenButtonName}
             </Button>
           )}
+          <Button variant="contained" color="primary" onClick={handleChoose}>
+            Pridať odborku
+          </Button>
           <Button variant="contained" color="inherit" onClick={handleClose}>
             Zavrieť
           </Button>

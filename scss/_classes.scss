@@ -1,9 +1,0 @@
-@use "scss";
-
-@mixin image {
-    .image {
-        display: grid;
-        justify-self: center;
-        max-width: 150px;
-    }
-}

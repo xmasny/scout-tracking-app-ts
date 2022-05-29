@@ -1,5 +1,3 @@
-@use "../../../../scss/" as *;
-
 .card {
   display: grid;
   justify-content: center;
@@ -11,7 +9,11 @@
   cursor: pointer;
 }
 
-@include image;
+.image {
+  display: grid;
+  justify-self: center;
+  max-width: 150px;
+}
 
 .topic {
   display: grid;
