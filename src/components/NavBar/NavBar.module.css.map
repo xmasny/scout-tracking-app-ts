@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAGA,AAAA,UAAU,CAAC;EACT,eAAe,EAAE,GAAG;CACrB;;AAED,AAAA,OAAO,CAAC;EACN,UAAU,EAAE,2CAA2D;EACvE,eAAe,EAAE,aAAa;CAC/B;;AAED,AAAA,YAAY,CAAC;EACX,QAAQ,EAAE,MAAM;EAChB,GAAG,EAAE,CAAC;EACN,OAAO,EAAE,GAAG;CACb",
-    "sources": [
-        "NavBar.module.scss"
-    ],
-    "names": [],
-    "file": "NavBar.module.css"
-}
+{"version":3,"sources":["NavBar.module.scss","NavBar.module.css"],"names":[],"mappings":"AAGA;EACE,oBAAA;ACFF;;ADKA;EACE,uDAAA;EACA,8BAAA;ACFF;;ADKA;EACE,wBAAA;EAAA,gBAAA;EACA,MAAA;EACA,YAAA;ACFF","file":"NavBar.module.css"}

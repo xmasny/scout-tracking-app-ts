@@ -1,6 +1,4 @@
 .textFields {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-top: 1rem !important;
 }
@@ -10,13 +8,9 @@
 }
 
 .paper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-top: 1rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .typography {
@@ -24,11 +18,6 @@
 }
 
 .buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-/*# sourceMappingURL=VytvorNovuOdborkuDialog.module.css.map */
+  justify-content: end;
+}/*# sourceMappingURL=VytvorNovuOdborkuDialog.module.css.map */

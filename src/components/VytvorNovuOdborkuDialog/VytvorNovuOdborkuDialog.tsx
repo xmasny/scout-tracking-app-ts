@@ -10,6 +10,7 @@ import {
   MenuItem,
   TextField,
 } from '@mui/material';
+import { NewOdborka } from '../../types/types';
 
 import css from './VytvorNovuOdborkuDialog.module.css';
 import { useMutation, useQuery } from '@apollo/client';
@@ -18,6 +19,7 @@ import {
   AddNewOdborkaMutation,
 } from '../../queries.graphql';
 import { ProgKatEnum } from '../../models/enums/prog-kat.enum';
+import VlozitUlohyDialog from './VlozitUlohyDialog/VlozitUlohyDialog';
 
 const { ODBORKY } = ProgKatEnum;
 
@@ -53,15 +55,6 @@ type Categories = {
   ];
 };
 
-type NewOdborka = {
-  program_kat: number;
-  vekova_kat: string;
-  name: string;
-  photo: string;
-  stupen: string | number;
-  expertske_odborky: string | number;
-};
-
 const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
   const { data, loading } = useQuery(GetAllCategoriesQuery);
 
@@ -70,18 +63,21 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
   const handleCloseUlohy = () => setOpenUlohy(false);
 
   const [odborkaData, setOdborkaData] = useState<NewOdborka>({
-    program_kat: ODBORKY,
-    vekova_kat: null,
-    name: null,
-    photo: null,
-    stupen: 0,
-    expertske_odborky: 0,
+    addNewOdborka: {
+      program_kat: ODBORKY,
+      vekova_kat: '',
+      name: '',
+      photo: '',
+      stupen: '',
+      expertske_odborky: '',
+    },
   });
 
-  const [addNewOdborkaMutation, { error }] = useMutation<NewOdborka>(
-    AddNewOdborkaMutation
-  );
-  console.log(error);
+  const [
+    addNewOdborkaMutation,
+    { data: mutationData, loading: mutationLoading },
+  ] = useMutation<NewOdborka>(AddNewOdborkaMutation);
+
   if (loading) return null;
 
   const { vekovaKat, expertskeOdborky, stupen }: Categories = data;
@@ -104,12 +100,10 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
     </MenuItem>
   ));
 
-  console.log(odborkaData);
-
   return (
     <Box>
       <Dialog open={open} closeAfterTransition fullWidth maxWidth="md">
-        <DialogTitle>Vlož záladne informácie o odborke</DialogTitle>
+        <DialogTitle>Vlož základne informácie o odborke</DialogTitle>
         <DialogContent>
           <TextField
             className={css.textFields}
@@ -118,11 +112,13 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
             variant="outlined"
             color="secondary"
             fullWidth
-            value={odborkaData.name}
+            value={odborkaData.addNewOdborka.name}
             onChange={(e) => {
               setOdborkaData({
-                ...odborkaData,
-                name: e.target.value,
+                addNewOdborka: {
+                  ...odborkaData.addNewOdborka,
+                  name: e.target.value,
+                },
               });
             }}
           />
@@ -136,11 +132,13 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
               variant="outlined"
               color="secondary"
               fullWidth
-              value={odborkaData.vekova_kat}
+              value={odborkaData.addNewOdborka.vekova_kat}
               onChange={(e) => {
                 setOdborkaData({
-                  ...odborkaData,
-                  vekova_kat: e.target.value,
+                  addNewOdborka: {
+                    ...odborkaData.addNewOdborka,
+                    vekova_kat: e.target.value,
+                  },
                 });
               }}
             >
@@ -153,17 +151,17 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
               variant="outlined"
               color="secondary"
               fullWidth
-              value={odborkaData.stupen}
+              value={odborkaData.addNewOdborka.stupen}
               onChange={(e) => {
                 setOdborkaData({
-                  ...odborkaData,
-                  stupen: e.target.value,
+                  addNewOdborka: {
+                    ...odborkaData.addNewOdborka,
+                    stupen: e.target.value,
+                  },
                 });
               }}
             >
-              <MenuItem key={0} value={0}>
-                Bez voľby
-              </MenuItem>
+              <MenuItem value={0}>Nie je</MenuItem>
               {stupenMapped}
             </TextField>
             <TextField
@@ -172,17 +170,17 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
               variant="outlined"
               color="secondary"
               fullWidth
-              value={odborkaData.expertske_odborky}
+              value={odborkaData.addNewOdborka.expertske_odborky}
               onChange={(e) => {
                 setOdborkaData({
-                  ...odborkaData,
-                  expertske_odborky: e.target.value,
+                  addNewOdborka: {
+                    ...odborkaData.addNewOdborka,
+                    expertske_odborky: e.target.value,
+                  },
                 });
               }}
             >
-              <MenuItem key={0} value={0}>
-                Bez voľby
-              </MenuItem>
+              <MenuItem value={0}>Nie je</MenuItem>
               {expertskeOdborkyMapped}
             </TextField>
           </Box>
@@ -192,11 +190,13 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
             variant="outlined"
             color="secondary"
             fullWidth
-            value={odborkaData.photo}
+            value={odborkaData.addNewOdborka.photo}
             onChange={(e) => {
               setOdborkaData({
-                ...odborkaData,
-                photo: e.target.value,
+                addNewOdborka: {
+                  ...odborkaData.addNewOdborka,
+                  photo: e.target.value,
+                },
               });
             }}
           />
@@ -206,14 +206,15 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
             onClick={() => {
               addNewOdborkaMutation({
                 variables: {
-                  programKat: odborkaData.program_kat,
-                  vekovaKat: odborkaData.vekova_kat,
-                  name: odborkaData.name,
-                  photo: odborkaData.photo,
-                  stupen: odborkaData.stupen,
-                  expertskeOdborky: odborkaData.expertske_odborky,
+                  programKat: odborkaData.addNewOdborka.program_kat,
+                  vekovaKat: odborkaData.addNewOdborka.vekova_kat,
+                  name: odborkaData.addNewOdborka.name,
+                  photo: odborkaData.addNewOdborka.photo,
+                  stupen: odborkaData.addNewOdborka.stupen,
+                  expertskeOdborky: odborkaData.addNewOdborka.expertske_odborky,
                 },
               });
+              handleOpenUlohy();
             }}
             variant="contained"
             color="primary"
@@ -225,6 +226,13 @@ const VytvorNovuOdborkuDialog: React.FC<Props> = ({ handleClose, open }) => {
           </Button>
         </DialogActions>
       </Dialog>
+      {mutationData && (
+        <VlozitUlohyDialog
+          data={mutationData}
+          open={openUlohy}
+          handleClose={handleCloseUlohy}
+        />
+      )}
     </Box>
   );
 };

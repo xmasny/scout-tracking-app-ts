@@ -19,7 +19,7 @@ type Props = {
 
 const Subsection: React.FC<Props> = ({ id: expId, name: expName, program }) => {
   const programMapped = program.map((aktivita: any) => {
-    return <ActivityCard key={aktivita.id} program={aktivita.items} />;
+    return <ActivityCard key={aktivita.items[0].id} program={aktivita.items} />;
   });
 
   return (

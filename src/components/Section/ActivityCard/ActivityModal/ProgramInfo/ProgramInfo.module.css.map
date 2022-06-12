@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,IAAI,CAAJ,8BAAI",
-    "sources": [
-        "ProgramInfo.module.scss"
-    ],
-    "names": [],
-    "file": "ProgramInfo.module.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"ProgramInfo.module.css"}

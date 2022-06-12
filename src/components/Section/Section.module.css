@@ -4,25 +4,14 @@
 }
 
 .sectionOther {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: top;
-      -ms-flex-align: top;
-          align-items: top;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: top;
 }
 
 .spinner {
-  display: -ms-grid;
   display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   margin: 1rem;
-}
-/*# sourceMappingURL=Section.module.css.map */
+}/*# sourceMappingURL=Section.module.css.map */

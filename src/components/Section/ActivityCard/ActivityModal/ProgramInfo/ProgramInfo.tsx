@@ -15,8 +15,6 @@ type Props = {
 };
 
 const ProgramInfo: React.FC<Props> = ({ info }) => {
-  console.log(info);
-
   return (
     <Box>
       {info.poznamky && (

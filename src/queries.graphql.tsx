@@ -79,7 +79,19 @@ export const AddNewOdborkaMutation = gql`
       stupen: $stupen
       expertske_odborky: $expertskeOdborky
     ) {
+      id
       name
+      photo
+    }
+  }
+`;
+
+export const AddNewUlohyOdborkaMutation = gql`
+  mutation AddNewUlohyOdborka($ulohy: [UlohaInputType!]!) {
+    addNewUlohyOdborka(ulohy: $ulohy) {
+      program_id
+      cislo_ulohy
+      text_ulohy
     }
   }
 `;

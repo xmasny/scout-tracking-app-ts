@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,CAAC;EACH,UAAU,EAAE,IAAI;CACjB;;AAED,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,IAAI;EACf,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,IAAI;CACjB",
-    "sources": [
-        "Subsection.module.scss"
-    ],
-    "names": [],
-    "file": "Subsection.module.css"
-}
+{"version":3,"sources":["Subsection.module.scss","Subsection.module.css"],"names":[],"mappings":"AAAA;EACE,gBAAA;ACCF;;ADEA;EACE,aAAA;EACA,eAAA;EACA,uBAAA;EACA,gBAAA;EACA,gBAAA;ACCF","file":"Subsection.module.css"}

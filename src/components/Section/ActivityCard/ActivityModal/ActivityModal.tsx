@@ -29,11 +29,14 @@ const ActivityModal: React.FC<Props> = ({ handleClose, open, program }) => {
 
   const programUlohyMap = ulohy.map((uloha: any) => {
     const programPodulohyMap = uloha.podulohy?.map((poduloha: any) => {
-      return <li className={css.spaceBetween}>{poduloha}</li>;
+      return (
+        <li key={poduloha} className={css.spaceBetween}>
+          {poduloha}
+        </li>
+      );
     });
-
     return (
-      <li className={css.spaceBetween}>
+      <li key={uloha.uloha_id} className={css.spaceBetween}>
         {uloha.text_ulohy}
         <ul>{programPodulohyMap}</ul>
       </li>

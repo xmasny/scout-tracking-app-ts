@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAAA,IAAI,CAAJ,gCAAI;AAEJ,AAAA,KAAK,CAAC;EACJ,aAAa,EAAE,IAAI;CACpB;;AAED,AAAA,MAAM,CAAC;EACL,SAAS,EAAE,IAAI;CAChB",
-    "sources": [
-        "ProgramInfoCategory.module.scss"
-    ],
-    "names": [],
-    "file": "ProgramInfoCategory.module.css"
-}
+{"version":3,"sources":["ProgramInfoCategory.module.scss","ProgramInfoCategory.module.css"],"names":[],"mappings":"AAAA;EACE,mBAAA;ACCF;;ADEA;EACE,eAAA;ACCF","file":"ProgramInfoCategory.module.css"}
