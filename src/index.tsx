@@ -12,8 +12,8 @@ import {
 
 const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'http://localhost:3001/graphql',
-    //uri: 'https://scout-tracking-app-graphql.herokuapp.com/graphql',
+    //uri: 'http://localhost:3001/graphql',
+    uri: 'https://scout-tracking-app-graphql.herokuapp.com/graphql',
   }),
   cache: new InMemoryCache(),
 });
