@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 import {
   ApolloClient,
   ApolloProvider,
   HttpLink,
   InMemoryCache,
-} from '@apollo/client';
+} from "@apollo/client";
 
 const client = new ApolloClient({
   link: new HttpLink({
-    //uri: 'http://localhost:3001/graphql',
-    uri: 'https://scout-tracking-app-graphql.herokuapp.com/graphql',
+    uri: "http://localhost:3001/graphql",
+    //uri: 'https://scout-tracking-app-graphql.herokuapp.com/graphql',
   }),
   cache: new InMemoryCache(),
 });
@@ -24,7 +24,7 @@ ReactDOM.render(
       <App />
     </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

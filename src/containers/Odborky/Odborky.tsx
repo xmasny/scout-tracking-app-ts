@@ -52,6 +52,8 @@ const Odborky: React.FC = () => {
     setSearchField(remove(toLowerCase));
   };
 
+  console.log(vekKatData);
+
   const sections = vekKatData.vekovaKat.map((section: VekKat) => {
     return (
       <Section
