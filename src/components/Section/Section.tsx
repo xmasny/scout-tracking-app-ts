@@ -1,121 +1,121 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
-import css from './Section.module.css';
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useLayoutEffect, useState } from "react";
+import css from "./Section.module.css";
+import { useQuery } from "@apollo/client";
 import {
-  GetExpertskeOdborkyQuery,
-  GetProgramOdborkyQuery,
-} from '../../queries.graphql';
-import { CircularProgress } from '@mui/material';
-import { ExpertskeOdborky, Program } from '../../models/entities';
-import Subsection from './Subsection/Subsection';
-import { VekKatEnum } from '../../models/enums/vek-kat.enum';
-import { ProgKatEnum } from '../../models/enums/prog-kat.enum';
+	GetExpertskeOdborkyQuery,
+	GetProgramOdborkyQuery,
+} from "../../queries.graphql";
+import { CircularProgress } from "@mui/material";
+import { ExpertskeOdborky, Program } from "../../models/entities";
+import Subsection from "./Subsection/Subsection";
+import { VekKatEnum } from "../../models/enums/vek-kat.enum";
+import { ProgKatEnum } from "../../models/enums/prog-kat.enum";
 import {
-  Accordion,
-  Box,
-  AccordionSummary,
-  Typography,
-  AccordionDetails,
-} from '@mui/material';
-import ActivityCard from './ActivityCard/ActivityCard';
-import { collect } from 'collect.js';
-import { remove } from 'remove-accents';
+	Accordion,
+	Box,
+	AccordionSummary,
+	Typography,
+	AccordionDetails,
+} from "@mui/material";
+import ActivityCard from "./ActivityCard/ActivityCard";
+import { collect } from "collect.js";
+import { remove } from "remove-accents";
 
 const { SKAUTI } = VekKatEnum;
 const { ODBORKY } = ProgKatEnum;
 
 type Props = {
-  name: string;
-  id: number;
-  searchField: string;
+	name: string;
+	id: number;
+	searchField: string;
 };
 
 type Data = {
-  program: Program[];
+	program: Program[];
 };
 
 const Section: React.FC<Props> = ({
-  name: vekKatName,
-  id: vekKatId,
-  searchField,
+	name: vekKatName,
+	id: vekKatId,
+	searchField,
 }) => {
-  const { data: expertskeOdborkyData, loading: expertskeOdborkyLoading } =
-    useQuery(GetExpertskeOdborkyQuery);
+	const { data: expertskeOdborkyData, loading: expertskeOdborkyLoading } =
+		useQuery(GetExpertskeOdborkyQuery);
 
-  const {
-    data: programData,
-    loading: programLoading,
-  }: { data: Data; loading: boolean } = useQuery(GetProgramOdborkyQuery, {
-    variables: { programId: ODBORKY, vekovaKatId: vekKatId },
-  });
+	const {
+		data: programData,
+		loading: programLoading,
+	}: { data: Data; loading: boolean } = useQuery(GetProgramOdborkyQuery, {
+		variables: { programId: ODBORKY, vekovaKatId: vekKatId },
+	});
 
-  const [filteredProgram, setFilteredProgram] = useState<Program[]>();
+	const [filteredProgram, setFilteredProgram] = useState<Program[]>();
 
-  useEffect(() => {
-    if (!programLoading) {
-      const filter = programData.program.filter((value: Program) =>
-        remove(value.name.toLowerCase()).includes(searchField)
-      );
+	useEffect(() => {
+		if (!programLoading) {
+			const filter = programData.program.filter((value: Program) =>
+				remove(value.name.toLowerCase()).includes(searchField)
+			);
 
-      setFilteredProgram(filter);
-    }
-  }, [programData, searchField, programLoading]);
+			setFilteredProgram(filter);
+		}
+	}, [programData, searchField, programLoading]);
 
-  if (expertskeOdborkyLoading || programLoading) {
-    return (
-      <Box className={css.spinner}>
-        <CircularProgress color="secondary" />
-      </Box>
-    );
-  }
+	if (expertskeOdborkyLoading || programLoading) {
+		return (
+			<Box className={css.spinner}>
+				<CircularProgress color="secondary" />
+			</Box>
+		);
+	}
 
-  const collection = collect(filteredProgram);
-  const program = collection.groupBy('name').toArray();
+	const collection = collect(filteredProgram);
+	const program = collection.groupBy("name").toArray();
 
-  //console.log(program);
+	//console.log(program);
 
-  const subsections = () =>
-    expertskeOdborkyData.expertskeOdborky.map(
-      (subsection: ExpertskeOdborky) => {
-        const expFiltered = program.filter(
-          (odborka: any) =>
-            odborka.items[0].expertske_odborky.id === subsection.id
-        );
+	const subsections = () =>
+		expertskeOdborkyData.expertskeOdborky.map(
+			(subsection: ExpertskeOdborky) => {
+				const expFiltered = program.filter(
+					(odborka: any) =>
+						odborka.items[0].expertske_odborky.id === subsection.id
+				);
 
-        return (
-          <Subsection
-            key={subsection.id}
-            id={subsection.id}
-            name={subsection.name}
-            program={expFiltered}
-          />
-        );
-      }
-    );
+				return (
+					<Subsection
+						key={subsection.id}
+						id={subsection.id}
+						name={subsection.name}
+						program={expFiltered}
+					/>
+				);
+			}
+		);
 
-  const programMapped = program.map((aktivita: any) => {
-    return <ActivityCard key={aktivita.items[0].id} program={aktivita.items} />;
-  });
+	const programMapped = program.map((aktivita: any) => {
+		return <ActivityCard key={aktivita.items[0].id} program={aktivita.items} />;
+	});
 
-  return (
-    <Box className={css.box}>
-      {programMapped.length !== 0 && (
-        <Accordion expanded>
-          <AccordionSummary>
-            <Typography variant="h4">{vekKatName}</Typography>
-          </AccordionSummary>
-          <AccordionDetails
-            className={vekKatId === SKAUTI ? null : css.sectionOther}
-          >
-            {programMapped.length === 0 && (
-              <p>V danej kategorii sa nenachadza ziadna aktivita</p>
-            )}
-            {vekKatId === SKAUTI ? subsections() : programMapped}
-          </AccordionDetails>
-        </Accordion>
-      )}
-    </Box>
-  );
+	return (
+		<Box className={css.box}>
+			{programMapped.length !== 0 && (
+				<Accordion expanded>
+					<AccordionSummary>
+						<Typography variant="h4">{vekKatName}</Typography>
+					</AccordionSummary>
+					<AccordionDetails
+						className={vekKatId === SKAUTI ? null : css.sectionOther}>
+						{programMapped.length === 0 && (
+							<p>V danej kategorii sa nenachadza ziadna aktivita</p>
+						)}
+						{vekKatId === SKAUTI ? subsections() : programMapped}
+					</AccordionDetails>
+				</Accordion>
+			)}
+		</Box>
+	);
 };
 
 export default Section;
+
